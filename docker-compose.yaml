@@ -18,22 +18,22 @@ services:
     depends_on:
       - db
     restart: always
-#  nextjs:
-#    build:
-#      context: ./front
-#      dockerfile: Dockerfile
-#      args:
-#        API_URL: ${API_URL_BACK}
-#        NEXT_PUBLIC_API_URL: ${API_URL_FRONT}
-#    ports:
-#      - "3000:3000"
-#    environment:
-#      - NODE_ENV=production
-#      - API_URL=${API_URL_BACK}
-#      - NEXT_PUBLIC_API_URL=${API_URL_FRONT}
-#    depends_on:
-#      - api
-#    restart: always
+  nextjs:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+      args:
+        API_URL: ${API_URL_BACK}
+        NEXT_PUBLIC_API_URL: ${API_URL_FRONT}
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - API_URL=${API_URL_BACK}
+      - NEXT_PUBLIC_API_URL=${API_URL_FRONT}
+    depends_on:
+      - api
+    restart: always
   db:
     image: postgres:latest
     container_name: pg-container

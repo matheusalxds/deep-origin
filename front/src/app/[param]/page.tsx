@@ -30,9 +30,9 @@ export default function PageComponent() {
 
   return (
     <div>
-      <h1>Redirecionando...</h1>
+      <h1>Redirecting...</h1>
       <p>
-        Se não for redirecionado automaticamente, clique <a href={data.originalUrl}>aqui</a>.
+        If you are not automatically redirected, click <a href={data.originalUrl}>here</a>.
       </p>
     </div>
   );

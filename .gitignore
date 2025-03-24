@@ -65,7 +65,6 @@ lerna-debug.log*
 /build
 
 # misc
-.env*
 
 # vercel
 .vercel
