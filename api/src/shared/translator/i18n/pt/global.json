@@ -1,0 +1,6 @@
+{
+  "validation": {
+    "IS_URL": "The URL is invalid.",
+    "IS_STRING": "You not provided a string."
+  }
+}

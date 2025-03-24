@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - ${PORT}:${PORT}
+    environment:
+      - PORT=${PORT}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - DB_NAME=${DB_NAME}
+      - SLUG_URL=${SLUG_URL}
+    depends_on:
+      - db
+    restart: always
+#  nextjs:
+#    build:
+#      context: ./front
+#      dockerfile: Dockerfile
+#      args:
+#        API_URL: ${API_URL_BACK}
+#        NEXT_PUBLIC_API_URL: ${API_URL_FRONT}
+#    ports:
+#      - "3000:3000"
+#    environment:
+#      - NODE_ENV=production
+#      - API_URL=${API_URL_BACK}
+#      - NEXT_PUBLIC_API_URL=${API_URL_FRONT}
+#    depends_on:
+#      - api
+#    restart: always
+  db:
+    image: postgres:latest
+    container_name: pg-container
+    restart: always
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_USER: ${DB_USER}
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data

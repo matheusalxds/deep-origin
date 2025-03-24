@@ -1,0 +1,33 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateShortUrl {
+  originalUrl: String!
+}
+
+"""Date custom scalar type"""
+scalar Date
+
+type Mutation {
+  shortUrl(input: CreateShortUrl!): ShortUrlOut!
+  updateSlug(id: String!, shortUrl: String!): Boolean!
+}
+
+input Pagination {
+  page: Int = 1
+  take: Int = 10
+}
+
+type Query {
+  getSlug(id: String!): String!
+  originalUrl(shortUrl: String): String!
+  shortUrls(id: String, pagination: Pagination): [ShortUrlOut!]!
+}
+
+type ShortUrlOut {
+  createdAt: Date!
+  id: String!
+  originalUrl: String!
+  shortUrl: String!
+}
